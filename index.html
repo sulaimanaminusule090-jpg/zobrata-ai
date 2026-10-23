@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101020">
+  <title>Zobrata AI - Create Without Limits</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #101020;
+      color: white;
+    }
+    header {
+      padding: 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #292943;
+    }
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+      color: #a78bfa;
+    }
+    .hero {
+      text-align: center;
+      padding: 55px 20px 30px;
+    }
+    .hero h1 { font-size: 36px; margin-bottom: 12px; }
+    .hero p { color: #c3c3d8; line-height: 1.6; }
+    .tools {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      padding: 20px;
+      max-width: 700px;
+      margin: auto;
+    }
+    .tool {
+      background: #1c1c32;
+      border: 1px solid #343450;
+      border-radius: 16px;
+      padding: 22px 12px;
+      color: white;
+      text-align: left;
+      cursor: pointer;
+      min-height: 125px;
+    }
+    .tool .icon { font-size: 30px; }
+    .tool h3 { margin: 12px 0 5px; }
+    .tool p { color: #b7b7cf; font-size: 13px; }
+    .create {
+      max-width: 660px;
+      margin: 15px auto 40px;
+      padding: 20px;
+    }
+    textarea {
+      width: 100%;
+      min-height: 110px;
+      padding: 15px;
+      border-radius: 12px;
+      background: #1c1c32;
+      border: 1px solid #454563;
+      color: white;
+      font-size: 16px;
+      resize: vertical;
+    }
+    .generate {
+      width: 100%;
+      padding: 15px;
+      margin-top: 12px;
+      border: 0;
+      border-radius: 12px;
+      background: #8b5cf6;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    #message { color: #c4b5fd; line-height: 1.5; }
+    footer { text-align: center; padding: 25px; color: #9999b5; }
+    @media (max-width: 360px) {
+      .hero h1 { font-size: 29px; }
+      .tools { padding: 12px; gap: 9px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">✦ Zobrata AI</div>
+    <span>Creative Studio</span>
+  </header>
+
+  <section class="hero">
+    <h1>Create Without Limits.</h1>
+    <p>Turn your ideas into videos, images and creative content with AI.</p>
+  </section>
+
+  <section class="tools">
+    <button class="tool" data-tool="AI Video Generator">
+      <span class="icon">🎬</span>
+      <h3>AI Video</h3>
+      <p>Bring your ideas to life.</p>
+    </button>
+    <button class="tool" data-tool="AI Image Generator">
+      <span class="icon">🎨</span>
+      <h3>AI Images</h3>
+      <p>Create stunning visuals.</p>
+    </button>
+    <button class="tool" data-tool="AI Voice Generator">
+      <span class="icon">🎙️</span>
+      <h3>AI Voice</h3>
+      <p>Give your ideas a voice.</p>
+    </button>
+    <button class="tool" data-tool="Video Editor">
+      <span class="icon">✂️</span>
+      <h3>Video Editor</h3>
+      <p>Prepare content for sharing.</p>
+    </button>
+  </section>
+
+  <section class="create">
+    <h2 id="toolTitle">What would you like to create?</h2>
+    <textarea id="prompt" placeholder="Describe your idea here..."></textarea>
+    <button class="generate" id="generate">Start Creating</button>
+    <p id="message">Choose a creative tool and describe your idea.</p>
+  </section>
+
+  <footer>© 2026 Zobrata AI · Your creativity, powered by AI.</footer>
+
+  <script>
+    const title = document.getElementById("toolTitle");
+    const promptBox = document.getElementById("prompt");
+    const message = document.getElementById("message");
+
+    document.querySelectorAll(".tool").forEach(button => {
+      button.addEventListener("click", () => {
+        title.textContent = button.dataset.tool;
+        message.textContent = button.dataset.tool +
+          " selected. Describe what you want to create below.";
+        promptBox.focus();
+      });
+    });
+
+    document.getElementById("generate").addEventListener("click", () => {
+      if (!promptBox.value.trim()) {
+        message.textContent = "Please describe your idea first.";
+        promptBox.focus();
+        return;
+      }
+      message.textContent =
+        "Your idea is ready. AI generation will be connected in the next development step.";
+    });
+  </script>
+</body>
+</html>
